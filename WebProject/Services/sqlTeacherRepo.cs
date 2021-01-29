@@ -176,13 +176,18 @@ namespace server_api_demos.Services
                         teacher.Id = reader.GetInt32(0);
                         teacher.Name = reader.GetString(1);
                         teacher.Surname = reader.GetString(2);
+                        teacherList.Add(teacher);
                     }
 
                 }
             }
             return teacherList;
         }
-
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<string> GetCoursesList(int id)
         {
             List<string> courses = new List<string>();
@@ -198,6 +203,7 @@ namespace server_api_demos.Services
                     while (reader.Read())
                     {
                         string course = reader.GetString(1);
+                        courses.Add(course.ToString());
                     }
 
                 }

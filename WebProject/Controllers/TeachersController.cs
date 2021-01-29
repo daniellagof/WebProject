@@ -51,16 +51,20 @@ namespace server_api_demos.Controllers
         [HttpGet("GetTeachersBySurName{Surname}")]
         public List<TeachersModel> GetTeachersBySurName(string Surname)
         {
-            repo = new TeacherRepository();
-            return repo.GetTeachersBySurName(Surname);
+            repo1 = new sqlTeacherRepo();
+            return repo1.GetTeachersBySurName(Surname);
         }
         
-
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("GetTeachersByCourse{id}")]
          public List<string> GetCoursesOfTeacher(int id)
         {
-            repo = new TeacherRepository();
-            return repo.GetCoursesList(id);
+            repo1 = new sqlTeacherRepo();
+            return repo1.GetCoursesList(id);
             
         }
 
