@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="af7d2165-8ab9-42f1-b443-13af1f408427" ChangeDateTime="01/27/2021 12:48:45">
+    <Property Name="ElementName" Value="[dbo].[Exams].[Date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Exams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeachrId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a2cfb176-fa6c-492f-bfed-b1fe9e622886" ChangeDateTime="01/27/2021 13:19:32">
+    <Property Name="ElementName" Value="[dbo].[Exams].[TeachrId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Exams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TeacherId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="858c1339-f166-4efc-acf1-f51716f6cd80" ChangeDateTime="01/27/2021 13:19:49">
+    <Property Name="ElementName" Value="[dbo].[Exams].[DurationMinutes]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Exams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DurationMinuets" />
+  </Operation>
+</Operations>
