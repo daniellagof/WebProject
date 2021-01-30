@@ -14,13 +14,12 @@ namespace server_api_demos.Controllers
     [ApiController]
     public class ExamsController : ControllerBase
     {
-        private ExamsRepository repo = null;
+        private sqlExamRepo repo = new sqlExamRepo();
 
         // GET: api/<ExamController>
         [HttpGet]
         public IEnumerable<ExamModel> ListAllExams()
         {
-            repo = new ExamsRepository();
             return repo.GetAllExams();
         }
 
@@ -28,17 +27,16 @@ namespace server_api_demos.Controllers
         [HttpGet("GetById{id}")]
         public ExamModel GetById(int id)
         {
-            repo = new ExamsRepository();
             return repo.GetExamById(id);
         }
 
-        // POST api/<ExamController>
+        
         //add exam
         [HttpPost]
-        public int Post([FromBody] ExamModel exam)
+        public int Post(ExamModel exam)
         {
-            var newExm = repo.AddExam(exam);
-            return newExm;
+            int id = repo.AddExam(exam);
+            return id;
         }
 
         // PUT api/<ExamController>/5]
@@ -49,7 +47,6 @@ namespace server_api_demos.Controllers
             repo.UpdateExam(id, exam);
         }
 
-        // DELETE api/<ExamController>/5
         [HttpDelete("Delete{id}")]
         public bool Delete(int id)
         {
@@ -60,14 +57,14 @@ namespace server_api_demos.Controllers
        [HttpGet("GetAllExamsByTeacherId{id}")]
        public List<ExamModel> GetAllExamsByTeacherId(int id)
         {
-            repo = new ExamsRepository();
+            repo = new sqlExamRepo();
             return repo.GetAllExamsByTeacherId(id);
         }
 
        [HttpGet("GetExambyTitle{title}")]
        public ExamModel GetAllExamsByTitle(string title)
         {
-            repo = new ExamsRepository();
+            repo = new sqlExamRepo();
             return repo.GetExamWithTitle(title);
         } 
 

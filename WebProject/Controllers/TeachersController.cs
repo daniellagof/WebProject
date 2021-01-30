@@ -13,7 +13,6 @@ namespace server_api_demos.Controllers
     public class TeachersController : ControllerBase
     {
         private sqlTeacherRepo repo1 = null;
-        private TeacherRepository repo = null;
 
         //GET()  htt.../teacher/
         public IEnumerable<TeachersModel> GET()
@@ -55,13 +54,9 @@ namespace server_api_demos.Controllers
             return repo1.GetTeachersBySurName(Surname);
         }
         
-        /// <summary>
-        /// //////////////////////////////////////////////////////////////////
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        
         [HttpGet("GetTeachersByCourse{id}")]
-         public List<string> GetCoursesOfTeacher(int id)
+         public List<string> GetCoursesOfTeacher(int id) //teacherId
         {
             repo1 = new sqlTeacherRepo();
             return repo1.GetCoursesList(id);

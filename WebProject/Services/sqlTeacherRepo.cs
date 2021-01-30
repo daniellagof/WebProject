@@ -43,20 +43,20 @@ namespace server_api_demos.Services
 
                 }
 
-                 allCommand = new SqlCommand("SELECT * FROM Courses", connection);
+                allCommand = new SqlCommand("SELECT * FROM Courses", connection);
                 using (var reader = allCommand.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         string tempCourseName = reader.GetString(1);
                         var tempId = reader.GetInt32(2);
-                        
-                        foreach(TeachersModel t in teacherList) 
+
+                        foreach (TeachersModel t in teacherList)
                         {
-                            if (tempId==t.Id)
+                            if (tempId == t.Id)
                                 t.courses.Add(tempCourseName); // Does this work?????
                         }
-                   
+
                     }
 
                 }
@@ -92,7 +92,7 @@ namespace server_api_demos.Services
 
 
 
-        public int AddTeacher(TeachersModel newTeacher) 
+        public int AddTeacher(TeachersModel newTeacher)
         {
             using (var connection = new SqlConnection(this.ConnectionString))
             {
@@ -100,7 +100,7 @@ namespace server_api_demos.Services
                 //Command (SQL QUEERY)
                 SqlCommand allCommand = new SqlCommand("INSERT INTO Teachers (Id,Name,Surname) VALUES (newTeacher.Id,newTeacher.Name,newTeacher.SurName)");
                 // READ ROW BY ROW READER
-               
+
             }
             return 1;
         }
@@ -109,13 +109,13 @@ namespace server_api_demos.Services
             using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
-               
+
                 SqlCommand allCommand = new SqlCommand("DELETE FROM Teachers WHERE Id = " + id, connection);
                 return true;
             }
 
         }
-        public bool UpdateTeacher(int id, TeachersModel teacher) 
+        public bool UpdateTeacher(int id, TeachersModel teacher)
         {
             using (var connection = new SqlConnection(this.ConnectionString))
             {
@@ -127,7 +127,7 @@ namespace server_api_demos.Services
             }
             return true;
         }
-        
+
 
         public List<TeachersModel> GetTeachersByName(string name)
         {
@@ -137,8 +137,8 @@ namespace server_api_demos.Services
             {
                 connection.Open();
                 //Command (SQL QUEERY)
-               // string nameQuery = "SELECT * FROM Teachers WHERE Name = @FirstName";
-               // SqlCommand allCommand = new SqlCommand(nameQuery, connection);
+                // string nameQuery = "SELECT * FROM Teachers WHERE Name = @FirstName";
+                // SqlCommand allCommand = new SqlCommand(nameQuery, connection);
                 SqlCommand allCommand = new SqlCommand("SELECT * FROM Teachers WHERE Name =" + FirstName, connection);
                 // READ ROW BY ROW READER
                 using (var reader = allCommand.ExecuteReader())
@@ -157,7 +157,7 @@ namespace server_api_demos.Services
             return teacherList;
         }
 
-        
+
         public List<TeachersModel> GetTeachersBySurName(string Surname)
         {
             List<TeachersModel> teacherList = new List<TeachersModel>();
@@ -195,7 +195,7 @@ namespace server_api_demos.Services
             {
                 connection.Open();
                 //Command (SQL QUEERY)
-                SqlCommand allCommand = new SqlCommand("SELECT * FROM Courses Where Id = " + id, connection);
+                SqlCommand allCommand = new SqlCommand("SELECT * FROM Courses WHERE TeacherId = " + id, connection);
                 // READ ROW BY ROW READER
                 using (var reader = allCommand.ExecuteReader())
                 {
@@ -203,14 +203,14 @@ namespace server_api_demos.Services
                     while (reader.Read())
                     {
                         string course = reader.GetString(1);
-                        courses.Add(course.ToString());
+                        courses.Add(course);
                     }
 
                 }
             }
             return courses;
 
-        }
+        } 
 
         /*public List<int> GetTeachersWhoTeachCourse(string course)
         {
